@@ -100,6 +100,7 @@ action:
                   - condition: template
                     value_template: >
                       {{ trigger.payload_json.action_transaction is defined and
+                         trigger.payload_json.action_transaction is not none and
                          trigger.payload_json.action_code in codes_pins_valides }}
                 sequence:
                   - service: mqtt.publish
@@ -153,6 +154,7 @@ action:
                   - condition: template
                     value_template: >
                       {{ trigger.payload_json.action_transaction is defined and
+                         trigger.payload_json.action_transaction is not none and
                          trigger.payload_json.action_code not in codes_pins_valides }}
                 sequence:
                   - service: mqtt.publish
